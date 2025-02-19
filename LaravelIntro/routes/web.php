@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use Psy\CodeCleaner\FunctionContextPass;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,12 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/welcome', [AuthController::class, 'welcome']);
+
+Route::get('/data-table', function() {
+    return view('pages.data-table');
+});
+
+Route::get('table', function() {
+    return view('pages.table');
+});
+
