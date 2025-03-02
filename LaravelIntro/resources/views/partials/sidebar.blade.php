@@ -5,7 +5,11 @@
         <img src="{{asset('admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        @auth
+        <span class="text-white">{{ Auth::user()->name }}</span>
+    @else
+        <span class="text-white">belum login</span>
+    @endauth
       </div>
     </div>
 
@@ -28,14 +32,27 @@
              with font-awesome or any other icon font library -->
 
         <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
-                <i class="nav-icon fas  fa-tachometer-alt"></i>
+            <a href="/films" class="nav-link">
+                
                 <p>
-                    Dashboard
+                    film
 
                 </p>
             </a>
-        </li> 
+        </li>
+
+        <li class="nav-item">
+          <a href="/genres" class="nav-link">
+              
+              <p>
+                  genre
+
+              </p>
+          </a>
+      </li>
+
+
+        
 
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -60,6 +77,29 @@
             </li>
           </ul>
         </li>
+
+ @guest
+                <li class="nav-item">
+                    <a href="{{ route('login') }}" class="nav-link btn-warning">
+                        <p>Login</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('register') }}" class="nav-link  btn-primary">
+                        <p>Register</p>
+                    </a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a href="{{ route('logout') }}" class="nav-link btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <p>Logout</p>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+                </li>
+            @endguest
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

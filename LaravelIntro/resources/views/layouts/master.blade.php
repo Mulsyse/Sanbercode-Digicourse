@@ -13,6 +13,12 @@
   <link rel="stylesheet" href="{{asset('admin\dist\css\adminlte.min.css')}}">
 
   @stack('styles')
+  <style>
+     .card-img-top {
+        height: 300px; /* Sesuaikan nilai ini sesuai kebutuhan */
+        object-fit: cover; /* Untuk memastikan gambar menutupi seluruh area */
+    }
+</style>
 
 </head>
 <body class="hold-transition sidebar-mini">
